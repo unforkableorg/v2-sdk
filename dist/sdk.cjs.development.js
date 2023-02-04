@@ -36,7 +36,7 @@ var _SOLIDITY_TYPE_MAXIMA;
 })(exports.Rounding || (exports.Rounding = {}));
 
 var FACTORY_ADDRESS = '0x0000000000000000000000000000000000001110';
-var INIT_CODE_HASH = 'a5934690703a592a07e841ca29d5e5c79b5e22ed4749057bb216dc31100be1c0';
+var INIT_CODE_HASH = '0xa5934690703a592a07e841ca29d5e5c79b5e22ed4749057bb216dc31100be1c0';
 var MINIMUM_LIQUIDITY = /*#__PURE__*/JSBI.BigInt(1000); // exports for internal consumption
 
 var ZERO = /*#__PURE__*/JSBI.BigInt(0);
