@@ -10,10 +10,7 @@ export declare class Token {
     equals(other: Token): boolean;
     sortsBefore(other: Token): boolean;
 }
-export declare const WETH: {
-    1: Token;
-    3: Token;
-    4: Token;
-    5: Token;
-    42: Token;
+export declare const WCXS: {
+    785: Token;
+    786: Token;
 };

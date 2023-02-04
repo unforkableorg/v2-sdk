@@ -20,11 +20,8 @@ var _Decimal = _interopDefault(require('decimal.js-light'));
 var _SOLIDITY_TYPE_MAXIMA;
 
 (function (ChainId) {
-  ChainId[ChainId["MAINNET"] = 1] = "MAINNET";
-  ChainId[ChainId["ROPSTEN"] = 3] = "ROPSTEN";
-  ChainId[ChainId["RINKEBY"] = 4] = "RINKEBY";
-  ChainId[ChainId["G\xD6RLI"] = 5] = "G\xD6RLI";
-  ChainId[ChainId["KOVAN"] = 42] = "KOVAN";
+  ChainId[ChainId["MAINNET"] = 785] = "MAINNET";
+  ChainId[ChainId["TESTNET"] = 786] = "TESTNET";
 })(exports.ChainId || (exports.ChainId = {}));
 
 (function (TradeType) {
@@ -38,8 +35,8 @@ var _SOLIDITY_TYPE_MAXIMA;
   Rounding[Rounding["ROUND_UP"] = 2] = "ROUND_UP";
 })(exports.Rounding || (exports.Rounding = {}));
 
-var FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f';
-var INIT_CODE_HASH = '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f';
+var FACTORY_ADDRESS = '0x0000000000000000000000000000000000001110';
+var INIT_CODE_HASH = 'a5934690703a592a07e841ca29d5e5c79b5e22ed4749057bb216dc31100be1c0';
 var MINIMUM_LIQUIDITY = /*#__PURE__*/JSBI.BigInt(1000); // exports for internal consumption
 
 var ZERO = /*#__PURE__*/JSBI.BigInt(0);
@@ -376,11 +373,8 @@ function sortedInsert(items, add, maxSize, comparator) {
   }
 }
 
-var _CACHE, _WETH;
-var CACHE = (_CACHE = {}, _CACHE[exports.ChainId.MAINNET] = {
-  '0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A': 9 // DGD
-
-}, _CACHE);
+var _WCXS;
+var CACHE = {};
 var Token = /*#__PURE__*/function () {
   function Token(chainId, address, decimals, symbol, name) {
     validateSolidityTypeInstance(JSBI.BigInt(decimals), SolidityType.uint8);
@@ -393,7 +387,7 @@ var Token = /*#__PURE__*/function () {
 
   Token.fetchData = function fetchData(chainId, address, provider, symbol, name) {
     try {
-      var _CACHE2, _CACHE2$chainId;
+      var _CACHE, _CACHE$chainId;
 
       var _temp3 = function _temp3(parsedDecimals) {
         return new Token(chainId, address, parsedDecimals, symbol, name);
@@ -401,12 +395,12 @@ var Token = /*#__PURE__*/function () {
 
       if (provider === undefined) provider = providers.getDefaultProvider(networks.getNetwork(chainId));
 
-      var _temp4 = typeof ((_CACHE2 = CACHE) === null || _CACHE2 === void 0 ? void 0 : (_CACHE2$chainId = _CACHE2[chainId]) === null || _CACHE2$chainId === void 0 ? void 0 : _CACHE2$chainId[address]) === 'number';
+      var _temp4 = typeof ((_CACHE = CACHE) === null || _CACHE === void 0 ? void 0 : (_CACHE$chainId = _CACHE[chainId]) === null || _CACHE$chainId === void 0 ? void 0 : _CACHE$chainId[address]) === 'number';
 
       return Promise.resolve(_temp4 ? _temp3(CACHE[chainId][address]) : Promise.resolve(new contracts.Contract(address, ERC20, provider).decimals().then(function (decimals) {
-        var _CACHE3, _extends2, _extends3;
+        var _CACHE2, _extends2, _extends3;
 
-        CACHE = _extends({}, CACHE, (_extends3 = {}, _extends3[chainId] = _extends({}, (_CACHE3 = CACHE) === null || _CACHE3 === void 0 ? void 0 : _CACHE3[chainId], (_extends2 = {}, _extends2[address] = decimals, _extends2)), _extends3));
+        CACHE = _extends({}, CACHE, (_extends3 = {}, _extends3[chainId] = _extends({}, (_CACHE2 = CACHE) === null || _CACHE2 === void 0 ? void 0 : _CACHE2[chainId], (_extends2 = {}, _extends2[address] = decimals, _extends2)), _extends3));
         return decimals;
       })).then(_temp3));
     } catch (e) {
@@ -436,7 +430,7 @@ var Token = /*#__PURE__*/function () {
 
   return Token;
 }();
-var WETH = (_WETH = {}, _WETH[exports.ChainId.MAINNET] = /*#__PURE__*/new Token(exports.ChainId.MAINNET, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether'), _WETH[exports.ChainId.ROPSTEN] = /*#__PURE__*/new Token(exports.ChainId.ROPSTEN, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'), _WETH[exports.ChainId.RINKEBY] = /*#__PURE__*/new Token(exports.ChainId.RINKEBY, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'), _WETH[exports.ChainId.GÖRLI] = /*#__PURE__*/new Token(exports.ChainId.GÖRLI, '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', 18, 'WETH', 'Wrapped Ether'), _WETH[exports.ChainId.KOVAN] = /*#__PURE__*/new Token(exports.ChainId.KOVAN, '0xd0A1E359811322d97991E03f863a0C30C2cF029C', 18, 'WETH', 'Wrapped Ether'), _WETH);
+var WCXS = (_WCXS = {}, _WCXS[exports.ChainId.MAINNET] = /*#__PURE__*/new Token(exports.ChainId.MAINNET, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WCXS', 'Wrapped CXS'), _WCXS[exports.ChainId.TESTNET] = /*#__PURE__*/new Token(exports.ChainId.TESTNET, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WCXS', 'Wrapped CXS'), _WCXS);
 
 var _toSignificantRoundin, _toFixedRounding;
 var Decimal = /*#__PURE__*/toFormat(_Decimal);
@@ -1223,7 +1217,7 @@ exports.Route = Route;
 exports.Token = Token;
 exports.TokenAmount = TokenAmount;
 exports.Trade = Trade;
-exports.WETH = WETH;
+exports.WCXS = WCXS;
 exports.inputOutputComparator = inputOutputComparator;
 exports.tradeComparator = tradeComparator;
 //# sourceMappingURL=sdk.cjs.development.js.map
